@@ -1,0 +1,366 @@
+
+/* =========================
+   1. Global styles
+========================= */
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --background: #f3f6fb;
+  --surface: #ffffff;
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --text: #172033;
+  --muted: #64748b;
+  --border: #dbe3ef;
+  --success: #15803d;
+  --success-bg: #dcfce7;
+  --danger: #b91c1c;
+  --danger-bg: #fee2e2;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--background);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* =========================
+   2. Header
+========================= */
+
+.site-header {
+  padding: 38px 20px;
+  text-align: center;
+  color: #ffffff;
+  background: linear-gradient(135deg, #1e3a8a, #2563eb);
+}
+
+.site-header h1 {
+  margin: 0 0 10px;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  line-height: 1.2;
+}
+
+.site-header p {
+  max-width: 700px;
+  margin: 0 auto;
+  color: #dbeafe;
+}
+
+/* =========================
+   3. Main layout
+========================= */
+
+.container {
+  width: min(1100px, 92%);
+  margin: 30px auto;
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.panel {
+  min-width: 0;
+  padding: 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: 0 6px 20px rgb(15 23 42 / 5%);
+}
+
+.panel h2 {
+  margin-top: 0;
+  margin-bottom: 8px;
+  font-size: 1.35rem;
+}
+
+.panel h3 {
+  margin-top: 26px;
+  margin-bottom: 12px;
+  font-size: 1.05rem;
+}
+
+.panel > p {
+  color: var(--muted);
+}
+
+/* =========================
+   4. Forms and inputs
+========================= */
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+input,
+textarea {
+  display: block;
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background: #ffffff;
+  color: var(--text);
+  font: inherit;
+}
+
+textarea {
+  min-height: 160px;
+  resize: vertical;
+  font-family: Consolas, "Courier New", monospace;
+  line-height: 1.6;
+}
+
+input:focus,
+textarea:focus {
+  outline: 3px solid rgb(37 99 235 / 18%);
+  border-color: var(--primary);
+}
+
+.input-row,
+.button-row {
+  display: flex;
+  gap: 10px;
+  align-items: stretch;
+}
+
+.input-row input {
+  flex: 1;
+  min-width: 0;
+}
+
+.button-row {
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+
+/* =========================
+   5. Buttons
+========================= */
+
+button {
+  padding: 11px 16px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--primary);
+  color: #ffffff;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background: var(--primary-hover);
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+button:focus-visible {
+  outline: 3px solid #93c5fd;
+  outline-offset: 3px;
+}
+
+button.secondary {
+  background: #e2e8f0;
+  color: #1e293b;
+}
+
+button.secondary:hover {
+  background: #cbd5e1;
+}
+
+/* =========================
+   6. Results and DFA states
+========================= */
+
+.result {
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #f8fafc;
+  overflow-wrap: anywhere;
+}
+
+.result.accepted {
+  color: var(--success);
+  background: var(--success-bg);
+  border-color: #86efac;
+  font-weight: 700;
+}
+
+.result.rejected {
+  color: var(--danger);
+  background: var(--danger-bg);
+  border-color: #fca5a5;
+  font-weight: 700;
+}
+
+.state-list {
+  padding-left: 22px;
+}
+
+.state-list li {
+  margin-bottom: 8px;
+}
+
+code {
+  padding: 2px 5px;
+  border-radius: 4px;
+  background: #eff6ff;
+  color: #1d4ed8;
+  overflow-wrap: anywhere;
+}
+
+/* =========================
+   7. Summary cards
+========================= */
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.summary-card {
+  padding: 18px;
+  text-align: center;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #f8fafc;
+}
+
+.summary-card span {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--primary);
+}
+
+.summary-card p {
+  margin: 4px 0 0;
+  color: var(--muted);
+}
+
+/* =========================
+   8. Token table
+========================= */
+
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.92rem;
+}
+
+thead {
+  background: #eff6ff;
+}
+
+th,
+td {
+  padding: 11px 12px;
+  border-bottom: 1px solid var(--border);
+  overflow-wrap: anywhere;
+}
+
+th {
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+tbody tr:hover {
+  background: #f8fafc;
+}
+
+td:first-child {
+  font-family: Consolas, "Courier New", monospace;
+}
+
+/* =========================
+   9. Error list and footer
+========================= */
+
+#error-list {
+  padding-left: 22px;
+}
+
+#error-list li {
+  margin-bottom: 8px;
+  overflow-wrap: anywhere;
+}
+
+#error-list .error-item {
+  color: var(--danger);
+}
+
+footer {
+  padding: 20px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* =========================
+   10. Responsive layout
+========================= */
+
+@media (max-width: 800px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .site-header {
+    padding: 28px 16px;
+  }
+
+  .container {
+    width: 94%;
+    margin: 18px auto;
+    gap: 16px;
+  }
+
+  .panel {
+    padding: 18px;
+  }
+
+  .input-row {
+    flex-direction: column;
+  }
+
+  .input-row button {
+    width: 100%;
+  }
+
+  .button-row button {
+    flex: 1;
+  }
+
+  th,
+  td {
+    padding: 9px;
+  }
+}
