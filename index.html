@@ -1,0 +1,126 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Programming Token Analyzer</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <h1>Programming Token Analyzer</h1>
+    <p>
+      An educational tool for exploring lexical analysis
+      and deterministic finite automata (DFA).
+    </p>
+  </header>
+
+  <main class="container">
+    <section class="panel">
+      <h2>1. Identifier DFA</h2>
+      <p>
+        Test whether a single input follows the identifier rule:
+        a letter or underscore first, followed by letters,
+        digits, or underscores.
+      </p>
+
+      <form id="identifier-form">
+        <label for="identifier-input">Enter an identifier</label>
+        <div class="input-row">
+          <input
+            id="identifier-input"
+            type="text"
+            placeholder="Example: student_name1"
+            autocomplete="off"
+          >
+          <button type="submit">Check Identifier</button>
+        </div>
+      </form>
+
+      <p id="identifier-result" class="result" aria-live="polite">
+        Enter an identifier to begin.
+      </p>
+
+      <h3>DFA States</h3>
+      <ul class="state-list">
+        <li><strong>q0:</strong> Starting state</li>
+        <li><strong>q1:</strong> Accepting state</li>
+        <li>
+          <strong>Rule:</strong>
+          <code>[A-Za-z_][A-Za-z0-9_]*</code>
+        </li>
+      </ul>
+    </section>
+
+    <section class="panel">
+      <h2>2. Token Analyzer</h2>
+      <p>
+        Enter a small piece of source code. The analyzer will
+        identify its tokens and check for lexical errors.
+      </p>
+
+      <label for="source-code">Source code</label>
+      <textarea
+        id="source-code"
+        rows="7"
+        spellcheck="false"
+        placeholder="let age = 20;&#10;print(age);"
+      ></textarea>
+
+      <div class="button-row">
+        <button id="analyze-button" type="button">
+          Analyze Tokens
+        </button>
+        <button id="clear-button" type="button" class="secondary">
+          Clear
+        </button>
+      </div>
+
+      <p id="analysis-status" class="result" aria-live="polite">
+        Enter source code and select Analyze Tokens.
+      </p>
+
+      <div class="summary-grid">
+        <div class="summary-card">
+          <span id="token-count">0</span>
+          <p>Total Tokens</p>
+        </div>
+        <div class="summary-card">
+          <span id="error-count">0</span>
+          <p>Lexical Errors</p>
+        </div>
+      </div>
+
+      <h3>Token Table</h3>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Lexeme</th>
+              <th>Token Type</th>
+              <th>Line</th>
+              <th>Column</th>
+            </tr>
+          </thead>
+          <tbody id="token-table-body">
+            <tr>
+              <td colspan="4">No tokens to display yet.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Lexical Errors</h3>
+      <ul id="error-list">
+        <li>No errors to display yet.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>Programming Token Analyzer — Automata Theory Project</p>
+  </footer>
+</body>
+</html>
